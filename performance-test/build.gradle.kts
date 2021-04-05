@@ -25,4 +25,17 @@ task("benchmark", JavaExec::class) {
     group = "JMH_Benchmarking"
     main = "org.openjdk.jmh.Main"
     classpath = sourceSets["test"].compileClasspath + sourceSets["test"].runtimeClasspath
+
+    val forceGc = true
+    val reportFormat = "json"
+    val reportBaseDir = "build/reports"
+    val reportFileLocation = "$reportBaseDir/jmh-report.json"
+    val outputFileLocation = "$reportBaseDir/jmh.log"
+
+    args = listOf(
+        "-gc", "$forceGc",
+        "-o", outputFileLocation,
+        "-rf", reportFormat,
+        "-rff", reportFileLocation
+    )
 }

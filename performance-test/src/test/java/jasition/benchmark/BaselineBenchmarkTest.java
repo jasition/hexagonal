@@ -25,8 +25,11 @@ package jasition.benchmark;/*
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Warmup;
 
 import java.util.concurrent.TimeUnit;
 
@@ -34,6 +37,9 @@ public class BaselineBenchmarkTest {
     @Benchmark
     @BenchmarkMode(Mode.SampleTime)
     @OutputTimeUnit(TimeUnit.MICROSECONDS)
+    @Warmup(iterations = 1, time = 1)
+    @Measurement(iterations = 3, time = 3)
+    @Fork(2)
     public void doNothing() {
         // do nothing to test the infrastructure overhead
     }
