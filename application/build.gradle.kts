@@ -9,6 +9,7 @@ val mockkVersion = "1.10.6"
 dependencies {
     implementation(kotlin("stdlib"))
     implementation(project(":core"))
+    implementation(project(":adapter"))
 
     testImplementation("junit:junit:$junitVersion")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
