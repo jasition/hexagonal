@@ -15,7 +15,12 @@ benefit is that, the change to the service is kept to the minimal, because it is
 the system without the fear of breaking the others.
 
 If you are new to this architecture, you can start reading from this [blog](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
-    
+
+## How do I make use of it?
+This project is modularised to separate the concerns, and it is managed by Gradle Kotlin DSL. Feel free to replace the
+language, technology and library used, and remove modules that do not concern you (e.g. performance-test). However, I 
+strongly recommend you to keep the code in the corresponding modules, otherwise why are you even here :) ?
+
 ## Core
 The module to host the pure Kotlin *core logic* and its corresponding *unit tests*, without any dependency to external 
 technology except for the language construct and test tooling. This module addresses *business concern* only.
