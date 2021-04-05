@@ -28,7 +28,7 @@ task("benchmark", JavaExec::class) {
 
     val forceGc = true
     val reportFormat = "json"
-    val reportBaseDir = "build/reports"
+    val reportBaseDir = "$buildDir/reports"
     val reportFileLocation = "$reportBaseDir/jmh-report.json"
     val outputFileLocation = "$reportBaseDir/jmh.log"
 
