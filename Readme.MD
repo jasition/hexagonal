@@ -24,7 +24,7 @@ This module addresses performance concern only.
 
 ## Adapter
 The module to host the adapters to the ports, integration tests and contract tests. They will involve a lot of 
-technology that communicates with external resource, services and systems. This module addresses the concern of 
+technology that communicates with external resources, services and systems. This module addresses the concern of 
 providing APIs to the external, data transformation between the core and the external world, and how to the data are 
 transported.
 
