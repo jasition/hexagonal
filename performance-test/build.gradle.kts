@@ -14,9 +14,11 @@ dependencies {
     implementation("org.openjdk.jmh:jmh-core:$jmhVersion")
     annotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:$jmhVersion")
 
+    testImplementation(testFixtures(project(":core")))
     testImplementation("junit:junit:$junitVersion")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-property:$kotestVersion")
+    testAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:$jmhVersion")
 }
 
 task("benchmark", JavaExec::class) {

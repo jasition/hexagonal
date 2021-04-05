@@ -16,6 +16,6 @@ public class SampleCoreLogicBenchmarkTest {
         int a = (int) (Math.random() * 10);
         int b = (int) (Math.random() * 10);
 
-        new SampleCoreLogic().add(a, b);
+        SampleTestFixturesKt.sample().add(a, b);
     }
 }

@@ -10,7 +10,7 @@ internal class SampleCoreLogicBehaviourTest: StringSpec({
         forAll(
             row(4, 6, 10)
         ) { a, b, expected ->
-            SampleCoreLogic().add(a, b) shouldBe expected
+            sample().add(a, b) shouldBe expected
         }
     }
 })

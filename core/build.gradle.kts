@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm")
-    id ("java-test-fixtures")
+    `java-library`
+    `java-test-fixtures`
 }
 
 val arrowVersion = "0.13.1"
@@ -18,5 +19,8 @@ dependencies {
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-property:$kotestVersion")
     testImplementation("io.mockk:mockk:$mockkVersion")
+
+    testFixturesImplementation("io.arrow-kt:arrow-core:$arrowVersion")
+    testFixturesImplementation("io.vavr:vavr:$vavrVersion")
 
 }

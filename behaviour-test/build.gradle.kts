@@ -10,10 +10,10 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation(project(":core"))
 
+    testImplementation(testFixtures(project(":core")))
     testImplementation("junit:junit:$junitVersion")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-property:$kotestVersion")
     testImplementation("io.mockk:mockk:$mockkVersion")
-
 }
 
