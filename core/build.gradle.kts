@@ -1,9 +1,12 @@
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
 plugins {
     kotlin("jvm")
     `java-library`
     `java-test-fixtures`
     jacoco
-    id ("io.gitlab.arturbosch.detekt") version "1.16.0"
+    id("io.gitlab.arturbosch.detekt") version "1.16.0"
+    id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
 }
 
 val arrowVersion = "0.13.1"
@@ -44,6 +47,40 @@ tasks {
         }
         dependsOn(jacocoTestReport)
     }
+
+    jacoco {
+        toolVersion = "0.8.6"
+        reportsDir = file("$buildDir/reports/coverage")
+    }
+
+    detekt {
+        toolVersion = "1.16.0"
+        config = files("src/test/resources/detekt.yml")
+        buildUponDefaultConfig = true
+
+        reports {
+            xml {
+                enabled = false
+            }
+            html {
+                enabled = true
+                destination = file("$buildDir/reports/quality/detekt.html")
+            }
+            txt {
+                enabled = false
+            }
+        }
+    }
+
+    ktlint {
+        verbose.set(true)
+        outputToConsole.set(false)
+        ignoreFailures.set(false)
+        reporters {
+            reporter(ReporterType.HTML)
+        }
+    }
+
     test {
         jacoco {
             reportsDir = file("$buildDir/reports/coverage")
@@ -51,29 +88,5 @@ tasks {
     }
     check {
         dependsOn(jacocoTestCoverageVerification)
-    }
-}
-
-jacoco {
-    toolVersion = "0.8.6"
-    reportsDir = file("$buildDir/reports/coverage")
-}
-
-detekt {
-    toolVersion = "1.16.0"
-    config = files("src/test/resources/detekt.yml")
-    buildUponDefaultConfig = true
-
-    reports {
-        xml {
-            enabled = false
-        }
-        html {
-            enabled = true
-            destination = file("$buildDir/reports/quality/detekt.html")
-        }
-        txt {
-            enabled = false
-        }
     }
 }

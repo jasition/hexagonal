@@ -5,7 +5,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
-internal class SampleCoreLogicTest: StringSpec({
+internal class SampleCoreLogicTest : StringSpec({
     "Adds two numbers correctly" {
         forAll(
             row(4, 6, 10)
