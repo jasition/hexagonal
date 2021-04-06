@@ -1,5 +1,9 @@
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
 plugins {
     kotlin("jvm")
+    id("io.gitlab.arturbosch.detekt") version "1.16.0"
+    id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
 }
 
 val commonIoVersion = "2.4"
@@ -38,4 +42,34 @@ task("benchmark", JavaExec::class) {
         "-rf", reportFormat,
         "-rff", reportFileLocation
     )
+}
+
+tasks {
+    detekt {
+        toolVersion = "1.16.0"
+        config = files("src/test/resources/detekt.yml")
+        buildUponDefaultConfig = true
+
+        reports {
+            xml {
+                enabled = false
+            }
+            html {
+                enabled = true
+                destination = file("$buildDir/reports/quality/detekt.html")
+            }
+            txt {
+                enabled = false
+            }
+        }
+    }
+
+    ktlint {
+        verbose.set(true)
+        outputToConsole.set(false)
+        ignoreFailures.set(false)
+        reporters {
+            reporter(ReporterType.HTML)
+        }
+    }
 }

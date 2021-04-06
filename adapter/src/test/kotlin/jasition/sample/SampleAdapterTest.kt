@@ -5,7 +5,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
-internal class SampleAdapterTest: StringSpec({
+internal class SampleAdapterTest : StringSpec({
     "Transform external payload to internal entity correctly" {
         forAll(
             row(4, 6, 10)
